@@ -31,7 +31,7 @@ def home():
     return {"message":"Hello TutLinks.com"}
 
 
-@app.get("/predict")
+@app.post("/predict")
 def predict(params: Input):
     print(params)
     filename = 'log_reg.pickle'

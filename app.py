@@ -8,20 +8,13 @@ import numpy as np
 
 from anonimizer import Anonimizer
 
+app = FastAPI()
+
+#domain where this api is hosted for example : localhost:5000/docs to see swagger documentation automagically generated.
+
 ano = Anonimizer()
 ano.load_model("ano.pickle")
 print(ano.meta_list)
-
-app = FastAPI()
-origins = ["http://localhost:8081"]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 
 class Input(BaseModel):
     """Data model for post request form"""
@@ -32,7 +25,6 @@ class Input(BaseModel):
     category: str
     amount: str
     Country_account: str
-
 
 @app.get("/")
 def home():
@@ -58,9 +50,8 @@ def predict(params: Input):
 
 
     prediction = loaded_model.predict(data)
-    # prediction = loaded_model.predict([[ 1.29312543e+03, -1.21054113e+02,  2.56682337e+01,
-    #      2.36900295e+00,  2.56859542e-01,  1.57038999e+00]])
+
     if prediction == 1:
-        return "prediction is Fraud"
+        return {"message":"prediction is Fraud"}
     else:
-        return "prediction is non fraud"
+        return {"message":"prediction is non fraud"}
