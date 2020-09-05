@@ -71,8 +71,7 @@ class Anonimizer:
 app = FastAPI()
 
 ano = Anonimizer()
-ano.load_model("ano.pickle")
-print(ano.meta_list)
+
 
 @app.get("/")
 def home():
@@ -81,4 +80,4 @@ def home():
 
 @app.post("/predict")
 def predict():
-    return {"message":ano.meta_list}
+    return {"message":ano}
