@@ -20,5 +20,6 @@ def home():
 
 
 @app.post("/predict")
-def predict():
+def predict(params: Input):
+    print(params)
     return {"message":"ano"}
