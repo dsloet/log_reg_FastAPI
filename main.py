@@ -1,6 +1,17 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+import pickle
+import pandas as pd
+import numpy as np
+
+from anonimizer import Anonimizer
+
 
 app = FastAPI()
+
+ano = Anonimizer()
+ano.load_model("ano.pickle")
+print(ano.meta_list)
 
 @app.get("/")
 def home():
@@ -9,4 +20,4 @@ def home():
 
 @app.post("/predict")
 def predict():
-    return {"message":"prediction is non fraud"}
+    return {"message":ano.meta_list}
