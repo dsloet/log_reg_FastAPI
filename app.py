@@ -34,9 +34,9 @@ class Input(BaseModel):
     Country_account: str
 
 
-@app.post("/")
-def helloworld():
-    return "Hello World"
+@app.get("/")
+def home():
+    return {"message":"Hello TutLinks.com"}
 
 
 @app.post("/predict")
