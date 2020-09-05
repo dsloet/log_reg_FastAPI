@@ -4,7 +4,15 @@ import pickle
 
 app = FastAPI()
 
+class Input(BaseModel):
+    """Data model for post request form"""
 
+    customer: str
+    payment_type: str
+    merchant: str
+    category: str
+    amount: str
+    Country_account: str
 
 @app.get("/")
 def home():
