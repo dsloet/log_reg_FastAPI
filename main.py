@@ -6,5 +6,5 @@ def home():
 
 
 @app.post("/predict")
-def predict(params: Input):
+def predict():
     return {"message":"prediction is non fraud"}
