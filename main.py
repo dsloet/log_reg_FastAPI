@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
+from anonimizer import Anonimizer
 
 app = FastAPI()
 
