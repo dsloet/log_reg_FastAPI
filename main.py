@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import pickle
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
-from anonimizer import Anonimizer
+from anonimizer.anonimizer import Anonimizer
 
 
 app = FastAPI()
