@@ -28,26 +28,22 @@ class Input(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message":"Hello TutLinks.com"}
+    return {"message":"Hello world"}
 
 
 @app.post("/predict")
 def predict(params: Input):
-    print(params)
+    
     filename = 'log_reg.pickle'
     loaded_model = pickle.load(open(filename, 'rb'))
     data = [[params.customer, params.payment_type, params.merchant,
              params.category, params.amount, params.Country_account]]
-    print(data)
+    
     data = pd.DataFrame(data, columns=['customer', 'payment_type', 'merchant', 'category', 'amount',
                                        'Country_account'])
 
-    print(data.head())
     data = ano.transform(data)
-    print("transformed data")
-    print(data)
-
-
+    
 
     prediction = loaded_model.predict(data)
 
